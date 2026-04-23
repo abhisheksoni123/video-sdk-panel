@@ -1,7 +1,19 @@
+import type { Request, Response } from "express";
 import Event from "../models/event.model";
 import { eventQueue } from "../queues/event.queue";
 
-export const ingestEvent = async (req, res) => {
+type IngestEventBody = {
+  sessionId: string;
+  organizationId: string;
+  eventType: string;
+  payload?: Record<string, unknown>;
+  idempotencyKey: string;
+};
+
+export const ingestEvent = async (
+  req: Request<{}, {}, IngestEventBody>,
+  res: Response,
+) => {
   const { sessionId, organizationId, eventType, payload, idempotencyKey } =
     req.body;
 

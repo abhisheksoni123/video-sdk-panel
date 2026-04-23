@@ -1,10 +1,10 @@
 import Session from "../models/session.model";
-import { canTransition } from "../utils/stateMachine";
+import { canTransition, type Status } from "../utils/stateMachine";
 import { log } from "../utils/logger";
 
 export const updateSessionStatus = async (
   sessionId: string,
-  nextStatus: string,
+  nextStatus: Status,
   triggeredBy: string,
 ) => {
   const session = await Session.findById(sessionId);

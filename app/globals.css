@@ -1,26 +1,156 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  font-family:
+    "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  background: #f4efe7;
+  color: #1b1a18;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(196, 120, 58, 0.18), transparent 28%),
+    linear-gradient(180deg, #f8f3ec 0%, #efe7db 100%);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+}
+
+.panel {
+  width: min(720px, 100%);
+  background: rgba(255, 252, 247, 0.92);
+  border: 1px solid rgba(64, 46, 24, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(68, 47, 22, 0.14);
+  padding: 32px;
+  backdrop-filter: blur(14px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  background: #fff4e8;
+  color: #9a521c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 18px 0 10px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.copy {
+  margin: 0;
+  max-width: 56ch;
+  color: #5d5347;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.stack {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  min-height: 52px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c26b2b 0%, #8e3f18 100%);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 16px 32px rgba(146, 67, 22, 0.22);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    opacity 120ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(146, 67, 22, 0.26);
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.mutedButton {
+  background: #241b15;
+  box-shadow: none;
+}
+
+.statusCard {
+  border-radius: 20px;
+  border: 1px solid rgba(64, 46, 24, 0.12);
+  background: #fff;
+  padding: 18px 20px;
+}
+
+.statusLabel {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8d5f38;
+}
+
+.statusText {
+  margin: 0;
+  color: #2f241c;
+  line-height: 1.5;
+}
+
+.sessionId {
+  font-family:
+    "SFMono-Regular", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas,
+    monospace;
+  font-size: 0.95rem;
+  color: #7d4d24;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 24px;
+    border-radius: 22px;
+  }
 }

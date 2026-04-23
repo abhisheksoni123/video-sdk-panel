@@ -7,9 +7,12 @@ new Worker(
   "event-queue",
   async (job) => {
     const event = await Event.findById(job.data.eventId);
-    if (!event) return;
+    if (!event || !event.sessionId || !event.eventType) return;
 
-    await handleEvent(event);
+    await handleEvent({
+      sessionId: event.sessionId,
+      eventType: event.eventType,
+    });
 
     event.processedAt = new Date();
     await event.save();

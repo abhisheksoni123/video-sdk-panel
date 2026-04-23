@@ -8,7 +8,15 @@ const sessionSchema = new mongoose.Schema(
     roomId: String,
     status: {
       type: String,
-      enum: ["CREATED", "LIVE", "PROCESSING", "COMPLETED", "FAILED"],
+      enum: [
+        "CREATED",
+        "LIVE",
+        "PROCESSING",
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED",
+        "EXPIRED",
+      ],
       default: "CREATED",
     },
   },
